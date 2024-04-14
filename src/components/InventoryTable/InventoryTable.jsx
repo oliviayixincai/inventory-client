@@ -1,71 +1,80 @@
 import React from "react";
-import "./WarehouseTable.scss";
+import "./InventoryTable.scss";
 import ListItem from "../ListItem/ListItem";
+import StatusTag from "../StatusTag/StatusTag";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 
-const WarehouseTable = ({ warehouses }) => {
+const InventoryTable = ({ inventories }) => {
   return (
-    <table className="table">
+    <table className="inventory-table">
       <thead>
         <tr>
-          <th className="label table__first-col">
-            warehouse
+          <th className="label inventory-table__first-col">
+            INVENTORY ITEM
             <img
-              className="table__sort-icon"
+              className="inventory-table__sort-icon"
               src={sortIcon}
               alt="filter icon"
             />
           </th>
           <th className="label">
-            address
+            CATEGORY
             <img
-              className="table__sort-icon"
+              className="inventory-table__sort-icon"
               src={sortIcon}
               alt="filter icon"
             />
           </th>
           <th className="label">
-            contact name
+            STATUS
             <img
-              className="table__sort-icon"
+              className="inventory-table__sort-icon"
               src={sortIcon}
               alt="filter icon"
             />
           </th>
           <th className="label">
-            contact information
+            QTY
             <img
-              className="table__sort-icon"
+              className="inventory-table__sort-icon"
               src={sortIcon}
               alt="filter icon"
             />
           </th>
-          <th className="label table__last-col">actions</th>
+          <th className="label">
+            WAREHOUSE
+            <img
+              className="inventory-table__sort-icon"
+              src={sortIcon}
+              alt="filter icon"
+            />
+          </th>
+          <th className="label inventory-table__last-col">ACTIONS</th>
         </tr>
       </thead>
       <tbody>
-        {warehouses.map((warehouse) => {
+        {inventories.map((inventory) => {
           return (
-            <tr key={warehouse.id}>
-              <td className="table__first-col">
+            <tr key={inventory.id}>
+              <td className="inventory-table__first-col">
                 <ListItem
-                  content={warehouse.warehouse_name}
-                  link={`/warehouses/${warehouse.id}`}
+                  content={inventory.item_name}
+                  link={`/inventories/${inventory.id}`}
                 />
               </td>
               <td>
-                <ListItem
-                  content={`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
-                />
+                <ListItem content={`${inventory.category}`} />
               </td>
               <td>
-                <ListItem content={warehouse.contact_name} />
+                <ListItem content={<StatusTag status={inventory.status} />} />
               </td>
               <td>
-                <ListItem content={warehouse.contact_phone} />
-                <ListItem content={warehouse.contact_email} />
+                <ListItem content={`${inventory.quantity}`} />
+              </td>
+              <td>
+                <ListItem content={`${inventory.warehouse_name}`} />
               </td>
               <td className="table__last-col">
                 <div className="table__icon-wrapper">
@@ -85,4 +94,4 @@ const WarehouseTable = ({ warehouses }) => {
   );
 };
 
-export default WarehouseTable;
+export default InventoryTable;
