@@ -10,13 +10,11 @@
   position: relative;
 
   @include tablet {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 5.75rem 2rem 0;
   }
 
   @include desktop {
-    margin-left: 8.125rem;
-    margin-right: 8.125rem;
+    margin: 5.75rem 8.125rem 0;
   }
 
   &__page-header {
@@ -36,9 +34,6 @@
         position: absolute;
         left: 3.5rem;
       }
-      //   @include desktop {
-      //     padding-left: 7.625rem;
-      //   }
     }
   }
 
@@ -62,7 +57,7 @@
     cursor: pointer; // Change the cursor on hover to indicate it's clickable
 
     img {
-      width: 20px; // Adjust the size of your icon as needed
+      width: 1.25rem; // Adjust the size of your icon as needed
       height: auto;
     }
     @include tablet {
