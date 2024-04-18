@@ -5,6 +5,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 
 import "./InventoryList.scss";
+import { Link } from "react-router-dom";
 
 const InventoryList = ({ inventories, onShowDeleteModal }) => {
   return (
@@ -31,10 +32,12 @@ const InventoryList = ({ inventories, onShowDeleteModal }) => {
                     content={<StatusTag status={inventory.status} />}
                   />
                   <ListItem label="QTY" content={inventory.quantity} />
-                  <ListItem
-                    label="warehouse"
-                    content={inventory.warehouse_name}
-                  />
+                  {inventory.warehouse_name && (
+                    <ListItem
+                      label="warehouse"
+                      content={inventory.warehouse_name}
+                    />
+                  )}
                 </div>
               </div>
               <div className="inventory-list__icon-wrapper">
@@ -43,7 +46,9 @@ const InventoryList = ({ inventories, onShowDeleteModal }) => {
                   alt="delete icon"
                   onClick={() => onShowDeleteModal(inventory)}
                 />
-                <img src={editIcon} alt="edit icon" />
+                <Link to={`/inventories/edit/${inventory.id}`}>
+                  <img src={editIcon} alt="edit icon" />
+                </Link>
               </div>
             </div>
           );
